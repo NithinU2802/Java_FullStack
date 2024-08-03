@@ -1,0 +1,16 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Home - RunGroup</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body layout:decorate="~{layout}">
+<div layout:fragment="content">
+    <!-- Main content goes here if different -->
+    <h2>Welcome to the RunGroup!</h2>
+    <div th:replace="layout"></div>
+</div>
+</body>
+</html>
