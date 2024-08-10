@@ -63,6 +63,7 @@
                         th:field="*{title}"
                         placeholder="Title">
             </div>
+            <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
             <div class="form-group">
                 <label for="photourl">Photourl</label>
                 <input
@@ -72,6 +73,7 @@
                         th:field="*{photoUrl}"
                         placeholder="Photo URL">
             </div>
+            <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
             <div class="form-group">
                 <label for="content">Content</label>
                 <input
@@ -81,6 +83,7 @@
                         th:field="*{content}"
                         placeholder="Content">
             </div>
+            <p class="text-danger" th:errors="*{content}" th:if="${#fields.hasErrors('content')}"></p>
             <button type="submit" class="btn btn-primary w-100">Register</button>
         </form>
     </div>
