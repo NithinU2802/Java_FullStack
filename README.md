@@ -45,3 +45,33 @@
     has been implemented by impl package.
     - In impl package it has ClubServiceImpl which is used to
     get the data and load it on the clobDto.
+
+# Validation
+        SpringBoot provide various annotation that makes our work
+    Easy to validate the table before inserting values on it. Few
+    notations are @NotNull @NotBlank @Email @Min @Max @Size @Pattern @Phone
+    @Past.
+        - Before Implement make sure these are implemented in DTO's not on
+    the model directly.
+        - Make sure that the controller has the method which used @Valid 
+    keywork and BindingResult as parameters for validation.
+
+    Eg:
+        
+    # Controller.java
+        @PostMapping("/")
+        public String checkPersonInfo(@Valid PersonForm personForm,BindingResult
+        bindingResult){
+            if(bindingResult.hasError())
+                return "error.html";
+            return "redirect:/results";
+        }
+    
+    # form.html
+        <!-- Include Followings -->
+        <td>Name:</td>
+        <td><input type="text" th:field="*{name}" /></td>
+        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" >Name</td>
+        
+        
+    
