@@ -79,5 +79,7 @@
     2. Role - id, name
     Join Table - user_id and role_Id
 
-
+# One-To-Many
+    Here I had made an event model which make relationship with club
+    that shows one to many relation.
     
