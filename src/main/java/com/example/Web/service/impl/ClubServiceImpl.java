@@ -1,5 +1,6 @@
 package com.example.Web.service.impl;
 
+import com.example.Web.Mapper.ClubMapper;
 import com.example.Web.dto.ClubDto;
 import com.example.Web.models.Club;
 import com.example.Web.repository.ClubRepository;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.example.Web.Mapper.ClubMapper.mapToClub;
+import static com.example.Web.Mapper.ClubMapper.mapToClubDto;
 
 @Service
 public class ClubServiceImpl implements ClubService {
@@ -22,7 +26,7 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public List<ClubDto> findAllClub() {
         List<Club> clubs=clubRepository.findAll();
-        return clubs.stream().map((this::mapToClubDto)).collect(Collectors.toList());
+        return clubs.stream().map(ClubMapper::mapToClubDto).collect(Collectors.toList());
     }
 
     @Override
@@ -54,27 +58,5 @@ public class ClubServiceImpl implements ClubService {
         return clubs.stream().map(club -> mapToClubDto(club)).collect(Collectors.toList());
     }
 
-    private Club mapToClub(ClubDto clubDto){
-        Club club=Club.builder()
-                .id(clubDto.getId())
-                .title(clubDto.getTitle())
-                .photoUrl(clubDto.getPhotoUrl())
-                .content(clubDto.getContent())
-                .createdOn(clubDto.getCreatedOn())
-                .updatedOn(clubDto.getUpdatedOn())
-                .build();
-        return club;
-    }
-
-    public ClubDto mapToClubDto(Club club){
-        return ClubDto.builder()
-                .id(club.getId())
-                .title(club.getTitle())
-                .content(club.getContent())
-                .photoUrl(club.getPhotoUrl())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-    }
 
 }

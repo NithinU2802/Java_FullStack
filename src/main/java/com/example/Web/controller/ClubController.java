@@ -85,4 +85,9 @@ public class ClubController {
         return "layout";
     }
 
+    @GetMapping("/index")
+    public String boot(){
+        return "index";
+    }
+
 }
