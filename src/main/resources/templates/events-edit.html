@@ -51,7 +51,7 @@
 
     <div class="container container_form">
         <h2 class="text-center mb-4">Register Your Event</h2>
-        <form role="form" method="post" th:action="@{/events/{eventId}(eventId=${event.id})}" th:object="${event}">
+        <form role="form" method="post" th:action="@{/events/{clubId}(clubId=${clubId})}" th:object="${event}">
             <input type="hidden" th:field="*{id}">
             <div class="form-group">
                 <label for="name">Name</label>
