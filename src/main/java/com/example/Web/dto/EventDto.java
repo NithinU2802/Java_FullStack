@@ -1,5 +1,6 @@
 package com.example.Web.dto;
 
+import com.example.Web.models.Club;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +23,8 @@ public class EventDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime endTime;
     private String type;
+    private Club club;
     private String photoUrl;
-    private LocalDateTime creationOn;
+    private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
 }

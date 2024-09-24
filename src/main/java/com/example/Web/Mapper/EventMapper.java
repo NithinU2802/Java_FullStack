@@ -12,7 +12,8 @@ public class EventMapper {
                 .startTime(eventDto.getStartTime())
                 .endTime(eventDto.getEndTime())
                 .type(eventDto.getType())
-                .creationOn(eventDto.getCreationOn())
+                .creationOn(eventDto.getCreatedOn())
+                .club(eventDto.getClub())
                 .photoUrl(eventDto.getPhotoUrl())
                 .updatedOn(eventDto.getUpdatedOn())
                 .build();
@@ -25,8 +26,9 @@ public class EventMapper {
                 .startTime(event.getStartTime())
                 .endTime(event.getEndTime())
                 .type(event.getType())
-                .creationOn(event.getCreationOn())
+                .createdOn(event.getCreationOn())
                 .photoUrl(event.getPhotoUrl())
+                .club(event.getClub())
                 .updatedOn(event.getUpdatedOn())
                 .build();
     }
