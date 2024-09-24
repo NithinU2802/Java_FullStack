@@ -16,7 +16,7 @@ import static com.example.Web.Mapper.ClubMapper.mapToClubDto;
 
 @Service
 public class ClubServiceImpl implements ClubService {
-    private final ClubRepository clubRepository;
+    private ClubRepository clubRepository;
 
     @Autowired
     public ClubServiceImpl(ClubRepository clubRepository) {
@@ -24,26 +24,26 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public List<ClubDto> findAllClub() {
-        List<Club> clubs=clubRepository.findAll();
-        return clubs.stream().map(ClubMapper::mapToClubDto).collect(Collectors.toList());
+    public List<ClubDto> findAllClubs() {
+        List<Club> clubs = clubRepository.findAll();
+        return clubs.stream().map((club) -> mapToClubDto(club)).collect(Collectors.toList());
     }
 
     @Override
     public Club saveClub(ClubDto clubDto) {
-        Club club=mapToClub(clubDto);
+        Club club = mapToClub(clubDto);
         return clubRepository.save(club);
     }
 
     @Override
-    public ClubDto findClubById(long clubId) {
-        Club club=clubRepository.findById(clubId).get();
+    public ClubDto findClubById(Long clubId) {
+        Club club = clubRepository.findById(clubId).get();
         return mapToClubDto(club);
     }
 
     @Override
     public void updateClub(ClubDto clubDto) {
-        Club club=mapToClub(clubDto);
+        Club club = mapToClub(clubDto);
         clubRepository.save(club);
     }
 
@@ -54,9 +54,7 @@ public class ClubServiceImpl implements ClubService {
 
     @Override
     public List<ClubDto> searchClubs(String query) {
-        List<Club> clubs=clubRepository.searchClubs(query);
+        List<Club> clubs = clubRepository.searchClubs(query);
         return clubs.stream().map(club -> mapToClubDto(club)).collect(Collectors.toList());
     }
-
-
 }

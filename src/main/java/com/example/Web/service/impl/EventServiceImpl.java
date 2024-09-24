@@ -18,45 +18,43 @@ import static com.example.Web.Mapper.EventMapper.mapToEventDto;
 
 @Service
 public class EventServiceImpl implements EventService {
-
     private EventRepository eventRepository;
     private ClubRepository clubRepository;
 
     @Autowired
-    public  EventServiceImpl(EventRepository eventRepository,ClubRepository clubRepository){
-        this.eventRepository=eventRepository;
-        this.clubRepository=clubRepository;
+    public EventServiceImpl(EventRepository eventRepository, ClubRepository clubRepository) {
+        this.eventRepository = eventRepository;
+        this.clubRepository = clubRepository;
     }
 
     @Override
     public void createEvent(Long clubId, EventDto eventDto) {
-        Club club=clubRepository.findById(clubId).get();
-        Event event=mapToEvent(eventDto);
+        Club club = clubRepository.findById(clubId).get();
+        Event event = mapToEvent(eventDto);
         event.setClub(club);
         eventRepository.save(event);
     }
 
     @Override
     public List<EventDto> findAllEvents() {
-        List<Event> events=eventRepository.findAll();
-        return events.stream().map(EventMapper::mapToEventDto).collect(Collectors.toList());
+        List<Event> events = eventRepository.findAll();
+        return events.stream().map(event -> mapToEventDto(event)).collect(Collectors.toList());
     }
 
     @Override
     public EventDto findByEventId(Long eventId) {
-        Event event=eventRepository.findById(eventId).get();
+        Event event = eventRepository.findById(eventId).get();
         return mapToEventDto(event);
     }
 
     @Override
     public void updateEvent(EventDto eventDto) {
-        Event event=mapToEvent(eventDto);
+        Event event = mapToEvent(eventDto);
         eventRepository.save(event);
     }
 
     @Override
-    public void deleteEvent(Long eventId) {
+    public void deleteEvent(long eventId) {
         eventRepository.deleteById(eventId);
     }
-
 }
