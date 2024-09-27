@@ -7,9 +7,11 @@ import com.example.Web.repository.RoleRepository;
 import com.example.Web.repository.UserRepository;
 import com.example.Web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
